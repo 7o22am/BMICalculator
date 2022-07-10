@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 class IconContenar extends StatelessWidget {
-  IconContenar({required this.icon ,required this.label}) ;
+  IconContenar({required this.icon ,required this.label  }) ;
   final IconData  icon ;
   final String label ;
-  static const lableTextStyle =TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98));
+  final   klableTextStyle = TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98));
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +18,7 @@ class IconContenar extends StatelessWidget {
         ),
         Text(
           label,
-          style: lableTextStyle,
+          style: klableTextStyle,
         )
       ],
     );

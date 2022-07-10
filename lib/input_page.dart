@@ -14,8 +14,11 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color malacolor =inactivecolor;
-  Color famalecolor =activecardcolor;
+  Color malacolor = inactivecolor;
+  Color famalecolor = activecardcolor;
+  int height = 180;
+  int weight = 50;
+  int age = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,48 +33,184 @@ class _InputPageState extends State<InputPage> {
                 children: <Widget>[
                   Expanded(
                       child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                             malacolor =inactivecolor;
-                             famalecolor =activecardcolor;
-                          });
-                           },
-                        child: ReusableCard(
-                    colour:  malacolor ,
-                    cardchil: IconContenar( icon: FontAwesomeIcons.mars, label: 'MALA',),
-                  ),
-                      )),
+                    onTap: () {
+                      setState(() {
+                        malacolor = inactivecolor;
+                        famalecolor = activecardcolor;
+                      });
+                    },
+                    child: ReusableCard(
+                      colour: malacolor,
+                      cardchil: IconContenar(
+                        icon: FontAwesomeIcons.mars,
+                        label: 'MALA',
+                      ),
+                    ),
+                  )),
                   Expanded(
                       child: GestureDetector(
-                        onTap: (){
-                          setState(() {
-                             malacolor =activecardcolor;
-                             famalecolor =inactivecolor;
-                          });
-                        },
-                        child: ReusableCard(
-                    colour: famalecolor,
-                    cardchil: IconContenar(icon: FontAwesomeIcons.venus, label: 'FAMALE',),
-                  ),
-                      )),
+                    onTap: () {
+                      setState(() {
+                        malacolor = activecardcolor;
+                        famalecolor = inactivecolor;
+                      });
+                    },
+                    child: ReusableCard(
+                      colour: famalecolor,
+                      cardchil: IconContenar(
+                        icon: FontAwesomeIcons.venus,
+                        label: 'FAMALE',
+                      ),
+                    ),
+                  )),
                 ],
               ),
             ),
             Expanded(
                 child: ReusableCard(
               colour: activecardcolor,
-              cardchil: IconContenar(icon: FontAwesomeIcons.venus, label: 'FAMEL',),
+              cardchil: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'HEIGHT',
+                    style: TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        height.toString(),
+                        style: TextStyle(
+                          fontSize: 50.0,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      Text(
+                        'cm',
+                        style:
+                            TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98)),
+                      )
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                        activeTrackColor: Colors.white,
+                        thumbColor: Color(0xFFEB1555),
+                        overlayColor: Color(0xFFEB1555),
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 30.0)),
+                    child: Slider(
+                      value: height.toDouble(),
+                      onChanged: (double newvale) {
+                        setState(() {
+                          height = newvale.toInt();
+                        });
+                      },
+                      min: 120.0,
+                      max: 220.0,
+                      activeColor: Colors.white,
+                      inactiveColor: Color(0xFF8D8E98),
+                    ),
+                  )
+                ],
+              ),
             )),
             Expanded(
               child: Row(
                 children: <Widget>[
                   Expanded(
                       child: ReusableCard(
-                    colour: activecardcolor, cardchil:  IconContenar(icon: FontAwesomeIcons.venus, label: 'FAMEL',),
-                  )),
+                          colour: activecardcolor,
+                          cardchil: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                'WEGHT',
+                                style: TextStyle(
+                                    fontSize: 18.0, color: Color(0xFF8D8E98)),
+                              ),
+                              Text(
+                                weight.toString(),
+                                style: TextStyle(
+                                  fontSize: 50.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  RounIconBottom(
+                                    icon: FontAwesomeIcons.plus,
+                                    onPressedd: () {
+                                      setState(() {
+                                        weight++;
+                                      });
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  RounIconBottom(
+                                    icon: FontAwesomeIcons.minus,
+                                    onPressedd: () {
+                                      setState(() {
+                                        weight--;
+                                      });
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ))),
                   Expanded(
                       child: ReusableCard(
-                    colour: activecardcolor, cardchil:  IconContenar(icon: FontAwesomeIcons.venus, label: 'FAMEL',),
+                    colour: activecardcolor,
+                    cardchil: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'AGE',
+                          style: TextStyle(
+                              fontSize: 18.0, color: Color(0xFF8D8E98)),
+                        ),
+                        Text(
+                          age.toString(),
+                          style: TextStyle(
+                            fontSize: 50.0,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RounIconBottom(
+                              icon: FontAwesomeIcons.plus,
+                              onPressedd: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RounIconBottom(
+                              icon: FontAwesomeIcons.minus,
+                              onPressedd: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   )),
                 ],
               ),
@@ -81,11 +220,29 @@ class _InputPageState extends State<InputPage> {
               width: double.infinity,
               height: bottomcontenarHeight,
               decoration: BoxDecoration(
-                  color: bottoncardcolor,
-                  borderRadius: BorderRadius.circular(10.0)),
+                color: bottoncardcolor,
+
+              ),
             )
           ],
         ));
   }
 }
 
+class RounIconBottom extends StatelessWidget {
+  RounIconBottom({required this.icon, required this.onPressedd});
+  final IconData icon;
+  final VoidCallback onPressedd;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      elevation: 0.0,
+      child: Icon(icon),
+      onPressed: onPressedd,
+      constraints: BoxConstraints.tightFor(height: 56.0, width: 56.0),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
+    );
+  }
+}
